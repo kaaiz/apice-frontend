@@ -24,6 +24,7 @@ body {
     max-width: 500px;
     margin: auto;
     margin-top: 20px;
+    border: solid black 1px;
 }
 
 .card img {
@@ -63,9 +64,18 @@ body {
     font-family: 'Lobster', cursive;
 }
 
+.titulo-seccion {
+    margin-top: 8px;
+}
+
 /* Iniciar Sesión */
 
 form button {
     width: 100%;
     margin-top: 10px;
 }
+
+.input {
+    border-radius: 0;
+}
+
