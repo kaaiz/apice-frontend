@@ -79,3 +79,13 @@ form button {
     border-radius: 0;
 }
 
+#choose{
+    
+    width: 120px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#confirmar_compra{
+    display: inline-block;
+}
