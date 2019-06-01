@@ -5,7 +5,8 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import injectContext from "./store/appContext";
 
-// import navbar here
+import { Nav } from "./component/main/Nav";
+import { Footer } from "./component/main/Footer";
 
 export class Layout extends React.Component {
 	render() {
@@ -17,10 +18,12 @@ export class Layout extends React.Component {
 			<div>
 				<BrowserRouter basename={basename}>
 					<ScrollToTop>
+						<Nav />
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route render={() => <h1>Not found!</h1>} />
 						</Switch>
+						<Footer />
 					</ScrollToTop>
 				</BrowserRouter>
 			</div>
