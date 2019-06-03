@@ -1,18 +1,24 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.scss";
+import React, { Component } from "react";
+import BioMain from "../component/inicio/BioMain";
+import Elemento from "../component/galeria/Elemento";
+import Producto from "../component/tienda/Producto";
 
-export class Home extends React.Component {
+export default class Home extends Component {
 	render() {
 		return (
-			<div className="text-center mt-5">
-				<h1>Hello Rigo!</h1>
-				<p>
-					<img src={rigoImage} />
-				</p>
-				<a href="#" className="btn btn-success">
-					If you see this green button, bootstrap is working
-				</a>
+			<div>
+				<Elemento />
+				<div className="container">
+					<div className="card header-seccion text-center border border-dark">
+						<h2>Producto Destacado</h2>
+					</div>
+					<Producto />
+					<div className="card header-seccion text-center border border-dark">
+						<h2>Producto en Promoción</h2>
+					</div>
+					<Producto />
+				</div>
+				<BioMain />
 			</div>
 		);
 	}
