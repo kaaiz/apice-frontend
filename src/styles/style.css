@@ -79,29 +79,9 @@ form button {
     border-radius: 0;
 }
 
-#choose{
-    width: 120px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#confirmar_compra{
-    display: inline-block;
-}
-
 /* Menu Administrador */
 
 .bd-example{
     display: flex;
     justify-content: center;
-}
-
-/* Tienda - Agregar Elementos */
-
-#textboxprecio{
-    padding-right: 250px;
-}
-
-#comboboxprecio{
-    padding-right: 23px;
 }
