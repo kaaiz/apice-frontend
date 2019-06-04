@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import Home from "./views/home";
+import Galeria from "./views/galeria";
+import GaleriaSeccion from "./views/galeriaseccion";
 import injectContext from "./store/appContext";
 
 import { Nav } from "./component/main/Nav";
@@ -21,6 +23,8 @@ export class Layout extends React.Component {
 						<Nav />
 						<Switch>
 							<Route exact path="/" component={Home} />
+							<Route exact path="/galeria" component={Galeria} />
+							<Route exact path="/galeria/elemento" component={GaleriaSeccion} />
 							<Route render={() => <h1>Not found!</h1>} />
 						</Switch>
 						<Footer />
