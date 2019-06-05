@@ -81,7 +81,11 @@ form button {
 
 /* Menu Administrador */
 
-.bd-example{
+.bd-example {
     display: flex;
     justify-content: center;
+}
+
+.menu-admin {
+    border-top: solid black 1px;
 }
