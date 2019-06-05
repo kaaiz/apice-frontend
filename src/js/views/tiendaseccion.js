@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import Galeria from "../component/galeria/Seccion";
+import Producto from "../component/tienda/Producto";
 
-export default class Seccion extends Component {
+export default class TiendaSeccion extends Component {
 	render() {
 		return (
 			<div>
 				<div className="container">
 					<div className="card header-seccion text-center border border-dark">
-						<h2>Galería de trabajos</h2>
+						<h2>Nombre de sección</h2>
 					</div>
 				</div>
-				<Galeria />
+				<Producto />
 			</div>
 		);
 	}

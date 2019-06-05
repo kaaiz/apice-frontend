@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import Galeria from "../component/galeria/Seccion";
+import SignIn from "../component/cuenta/SignIn";
 
-export default class Seccion extends Component {
+export default class Registro extends Component {
 	render() {
 		return (
 			<div>
 				<div className="container">
 					<div className="card header-seccion text-center border border-dark">
-						<h2>Galería de trabajos</h2>
+						<h2>Registrarse</h2>
 					</div>
 				</div>
-				<Galeria />
+				<SignIn />
 			</div>
 		);
 	}
