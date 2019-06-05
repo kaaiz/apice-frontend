@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Galería</a>
+                        <a class="nav-link" href="#">Trabajos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tienda</a>
@@ -43,7 +43,7 @@
 
     <div class="container">
         <div class="card header-seccion text-center border border-dark">
-            <h2 class="titulo-seccion">Crear cuenta</h2>
+            <h2>Carrito De Compras</h2>
         </div>
     </div>
 
@@ -52,21 +52,54 @@
             <div class="card-body">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nombre de usuario</label>
-                        <input type="name" class="form-control input" id="exampleInputEmail1" placeholder="Elegir nombre">
+                        
+                        <form class="form-inline">
+                          <div class="form-group">
+                            <label>Item 1</label>
+                            <select id="choose" class="custom-select" aria-label="Example select with button addon">
+                                <option selected>Cantidad</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                            <small id="passwordHelpInline" class="text-muted">
+                              Precio
+                            </small>
+                          </div>
+                    
+                    
+                     <div class="form-group">
+                            <label>Item 2</label>
+                            <select id="choose" class="custom-select" aria-label="Example select with button addon">
+                                <option selected>Cantidad</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                            <small id="passwordHelpInline" class="text-muted">
+                              Precio
+                            </small>
+                          </div>
+                          
+                          
+                           <div class="form-group">
+                            <label>Item 3</label>
+                            <select id="choose" class="custom-select" aria-label="Example select with button addon">
+                                <option selected>Cantidad</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                            <small id="passwordHelpInline" class="text-muted">
+                              Precio
+                            </small>
+                          </div>
+                    
+                          </form>
+
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Password</label>
-                        <input type="password" class="form-control input" id="exampleInputPassword1" placeholder="Ingresar password">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control input" id="exampleInputPassword1" placeholder="reingresar password">
-                    </div>
-                    <button class="btn btn-primary">Crear</button>
+                    <label>TOTAL:</label><br>
+                    <button class="btn btn-warning" id="confirmar_compra">Confirmar Compra</button>
                 </form>
             </div>
 
