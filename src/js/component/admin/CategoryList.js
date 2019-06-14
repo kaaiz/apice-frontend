@@ -35,20 +35,24 @@ export default function CategoryList() {
 						}}
 					</Context.Consumer>
 				</ul>
-				<div className="input-group flex-nowrap">
-					<div className="input-group-prepend">
-						<span className="input-group-text" id="addon-wrapping">
-							Agregar:
-						</span>
+
+				<form>
+					<div className="form-group">
+						<h3>Agregar nueva categoría</h3>
+						<input
+							type="text"
+							className="form-control"
+							placeholder="Título"
+							aria-label="Nueva categoría"
+							aria-describedby="addon-wrapping"
+						/>
+						<textarea className="form-control" rows="2" placeholder="Descripción" />
+						<input type="file" className="form-control-file" id="exampleFormControlFile1" />
 					</div>
-					<input
-						type="text"
-						className="form-control"
-						placeholder="Nueva categoría"
-						aria-label="Nueva categoría"
-						aria-describedby="addon-wrapping"
-					/>
-				</div>
+					<button type="submit" className="btn btn-primary">
+						Submit
+					</button>
+				</form>
 			</div>
 		</div>
 	);
