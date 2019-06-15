@@ -21,7 +21,12 @@ const injectContext = PassedComponent => {
 			});
 		}
 
-		componentDidMount() {}
+		componentDidMount() {
+			this.state.actions.getCategories("category/");
+			/*this.state.actions.getElements("element/");
+			this.state.actions.getTypes("type/");
+			this.state.actions.getProducts("product/"); */
+		}
 
 		render() {
 			// the initial value for the context its not null anymore, but the current state of this component,
