@@ -22,10 +22,10 @@ const injectContext = PassedComponent => {
 		}
 
 		componentDidMount() {
-			this.state.actions.getCategories("category/");
-			/*this.state.actions.getElements("element/");
-			this.state.actions.getTypes("type/");
-			this.state.actions.getProducts("product/"); */
+			this.state.actions.getElement("category");
+			this.state.actions.getElement("element");
+			this.state.actions.getElement("type");
+			this.state.actions.getElement("product");
 		}
 
 		render() {

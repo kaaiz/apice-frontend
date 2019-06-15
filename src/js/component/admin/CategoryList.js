@@ -14,14 +14,14 @@ function CategoryList() {
 						<tbody>
 							<Context.Consumer>
 								{({ store, actions }) => {
-									if (store.categories.length === 0) {
+									if (store.category.length === 0) {
 										return (
 											<tr>
 												<td>No hay categorías</td>
 											</tr>
 										);
 									}
-									return store.categories.map(category => {
+									return store.category.map(category => {
 										return (
 											<tr key={category.id}>
 												<td>{category.title}</td>
@@ -54,6 +54,7 @@ function CategoryList() {
 			</div>
 			<Context.Consumer>
 				{({ store, actions }) => {
+					const item = store.item;
 					return (
 						<div
 							className="modal fade"
@@ -72,7 +73,18 @@ function CategoryList() {
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
-									<div className="modal-body">Hola</div>
+									<div className="modal-body">Nombre</div>
+									<input
+										type="text"
+										className="form-control"
+										aria-label="Sizing example input"
+										aria-describedby="inputGroup-sizing-sm"
+										value=""
+									/>
+									<div className="modal-body">Descripción</div>
+									<textarea className="form-control" id="exampleFormControlTextarea1" rows="3" />
+									<div className="modal-body">Imagen</div>
+									<input type="file" className="form-control-file" id="exampleFormControlFile1" />
 									<div className="modal-footer">
 										<button type="button" className="btn btn-secondary" data-dismiss="modal">
 											Cerrar
