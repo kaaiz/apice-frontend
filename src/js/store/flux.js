@@ -1,28 +1,40 @@
+const ROOT = "http://127.0.0.1:8000/api/";
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
 			categories: [],
 			elements: [],
 			types: [],
-			products: []
+			products: [],
+			temp: {} // Objeto temporal PUT & POST
 		},
 		actions: {
-			getCategories(URL) {
-				fetch(URL)
+			setTemp(items) {
+				setStore({
+					temp: items
+				});
+			},
+			resetTemp() {
+				setStore({
+					temp: {}
+				});
+			},
+			getCategories(end) {
+				fetch(`${ROOT}${end}`)
 					.then(res => res.json())
 					.then(data => {
 						setStore({
 							categories: data
 						});
 					});
-			},
+			} /*,
 			DeleteCategory(num, URL) {
 				fetch(URL + "/" + num, {
 					method: "delete"
 				}).then(response => response.json());
-			},
-			getElements(URL) {
-				fetch(URL)
+			}*/,
+			getElements(end) {
+				fetch(`${ROOT}${end}`)
 					.then(res => res.json())
 					.then(data => {
 						setStore({
@@ -30,8 +42,8 @@ const getState = ({ getStore, setStore }) => {
 						});
 					});
 			},
-			getTypes(URL) {
-				fetch(URL)
+			getTypes(end) {
+				fetch(`${ROOT}${end}`)
 					.then(res => res.json())
 					.then(data => {
 						setStore({
@@ -39,8 +51,8 @@ const getState = ({ getStore, setStore }) => {
 						});
 					});
 			},
-			getProducts(URL) {
-				fetch(URL)
+			getProducts(end) {
+				fetch(`${ROOT}${end}`)
 					.then(res => res.json())
 					.then(data => {
 						setStore({

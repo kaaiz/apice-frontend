@@ -22,10 +22,10 @@ const injectContext = PassedComponent => {
 		}
 
 		componentDidMount() {
-			this.state.actions.getCategories("http://127.0.0.1:8000/api/category/");
-			this.state.actions.getElements("http://127.0.0.1:8000/api/element/");
-			this.state.actions.getTypes("http://127.0.0.1:8000/api/type/");
-			this.state.actions.getProducts("http://127.0.0.1:8000/api/product/");
+			this.state.actions.getCategories("category/");
+			/*this.state.actions.getElements("element/");
+			this.state.actions.getTypes("type/");
+			this.state.actions.getProducts("product/"); */
 		}
 
 		render() {

@@ -15,12 +15,5 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 
-//font awsome
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
-library.add(fab, faTrash);
-
 //render your react application
 ReactDOM.render(<Layout />, document.querySelector("#app"));
