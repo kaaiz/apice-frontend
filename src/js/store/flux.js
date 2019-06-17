@@ -6,7 +6,9 @@ const getState = ({ getStore, setStore }) => {
 			element: [],
 			type: [],
 			product: [],
-			temp: {} // Objeto temporal para PUT & POST & DIPLAY
+			temp: {}, // Objeto temporal para PUT & POST & DIPLAY
+			title: "",
+			description: ""
 		},
 		actions: {
 			setTemp(items) {
@@ -14,19 +16,23 @@ const getState = ({ getStore, setStore }) => {
 					temp: items
 				});
 			},
-			getElement(end) {
-				fetch(`${ROOT}${end}/`)
+			getElement(val) {
+				fetch(`${ROOT}${val}/`)
 					.then(res => res.json())
 					.then(data => {
 						setStore({
-							[end]: data
+							[val]: data
 						});
 					});
 			},
-			deleteElement(num, end) {
-				fetch(URL + "/" + num, {
+			deleteElement(id, val) {
+				fetch(`${ROOT}${val}/${id}`, {
 					method: "delete"
-				}).then(response => response.json());
+				}).then(res => {
+					setState(previousState => {
+						[val]: previousState.movies.filter(m => m.id !== movie.id)
+					};
+				});
 			}
 		}
 	};
