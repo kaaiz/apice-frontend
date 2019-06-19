@@ -24,10 +24,18 @@ const getState = ({ getStore, setStore }) => {
 					});
 			},
 			addElement(val, item) {
-				fetch(`${ROOT}${val}`, {
-					method: "post",
+				fetch(`${ROOT}${val}/`, {
+					method: "POST",
 					body: JSON.stringify(item)
-				}).then(res => res.json());
+				}).then(resp => {
+					if (!resp.ok) {
+						let data = this.store.val.concat([item]);
+						setStore({
+							[val]: data
+						});
+					}
+					return resp.json();
+				});
 			},
 			deleteElement(id, val) {
 				fetch(`${ROOT}${val}/${id}`, {

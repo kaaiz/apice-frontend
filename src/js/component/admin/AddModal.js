@@ -2,22 +2,23 @@ import React from "react";
 import { Context } from "../../store/appContext";
 
 export default class AddModal extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			title: "",
-			description: ""
+			text: ""
 		};
 		this.handleTitleChange = this.handleTitleChange.bind(this);
-		this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+		this.handleTextChange = this.handleTextChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleTitleChange(e) {
 		this.setState({ title: e.target.value });
 	}
 
-	handleDescriptionChange(e) {
-		this.setState({ description: e.target.value });
+	handleTextChange(e) {
+		this.setState({ text: e.target.value });
 	}
 
 	handleSubmit(e) {
@@ -27,12 +28,9 @@ export default class AddModal extends React.Component {
 		}
 		const newItem = {
 			title: this.state.title,
-			description: this.state.description
+			text: this.state.text
 		};
-		this.setState(state => ({
-			items: state.items.concat(newItem),
-			text: ""
-		}));
+		<Context.Consumer>{({ store, actions }) => actions.addElement("category", newItem)}</Context.Consumer>;
 	}
 
 	render() {
@@ -50,7 +48,7 @@ export default class AddModal extends React.Component {
 							aria-hidden="true">
 							<div className="modal-dialog" role="document">
 								<div className="modal-content">
-									<form onSubmit={this.handleSubmit(e)}>
+									<form onSubmit={this.handleSubmit}>
 										<div className="modal-header">
 											<h5 className="modal-title" id="exampleModalLabel">
 												Agregar
@@ -74,7 +72,7 @@ export default class AddModal extends React.Component {
 										<textarea
 											className="form-control"
 											rows="3"
-											onChange={this.handleDescriptionChange}
+											onChange={this.handleTextChange}
 											value={this.state.description}
 										/>
 										<div className="modal-body">Imagen</div>
@@ -83,9 +81,12 @@ export default class AddModal extends React.Component {
 											<button type="button" className="btn btn-secondary" data-dismiss="modal">
 												Cerrar
 											</button>
-											<button type="button" className="btn btn-primary">
-												Confirmar
-											</button>
+											<input
+												type="submit"
+												className="btn btn-secondary"
+												data-dismiss="modal"
+												value="Submit"
+											/>
 										</div>
 									</form>
 								</div>
