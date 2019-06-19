@@ -6,14 +6,12 @@ const getState = ({ getStore, setStore }) => {
 			element: [],
 			type: [],
 			product: [],
-			temp: {}, // Objeto temporal para PUT & POST & DIPLAY
-			title: "",
-			description: ""
+			temp: {}
 		},
 		actions: {
-			setTemp(items) {
+			setTemp(data) {
 				setStore({
-					temp: items
+					temp: data
 				});
 			},
 			getElement(val) {
@@ -25,14 +23,18 @@ const getState = ({ getStore, setStore }) => {
 						});
 					});
 			},
+			addElement(val, item) {
+				fetch(`${ROOT}${val}`, {
+					method: "post",
+					body: JSON.stringify(item)
+				}).then(res => res.json());
+			},
 			deleteElement(id, val) {
 				fetch(`${ROOT}${val}/${id}`, {
 					method: "delete"
-				}).then(res => {
-					setState(previousState => {
-						[val]: previousState.movies.filter(m => m.id !== movie.id)
-					};
-				});
+				}).then(res => res.json());
+				// Aquí falta agregar que si la response es OK entonces
+				// Actualizar el array localmente (setState) con un filter
 			}
 		}
 	};
