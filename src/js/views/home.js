@@ -13,10 +13,6 @@ export default class Home extends Component {
 						<h2>Producto Destacado</h2>
 					</div>
 					<Producto />
-					<div className="card header-seccion text-center border border-dark">
-						<h2>Producto en Promoción</h2>
-					</div>
-					<Producto />
 				</div>
 				<BioMain />
 			</div>

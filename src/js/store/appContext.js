@@ -21,11 +21,8 @@ const injectContext = PassedComponent => {
 			});
 		}
 
-		componentDidMount() {
-			this.state.actions.getCategories("category/");
-			/*this.state.actions.getElements("element/");
-			this.state.actions.getTypes("type/");
-			this.state.actions.getProducts("product/"); */
+		async componentDidMount() {
+			this.state.actions.getElement("category");
 		}
 
 		render() {
