@@ -2,63 +2,47 @@ const ROOT = "http://127.0.0.1:8000/api/";
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
-			categories: [],
-			elements: [],
-			types: [],
-			products: [],
-			temp: {} // Objeto temporal PUT & POST
+			category: [],
+			element: [],
+			type: [],
+			product: [],
+			temp: {}
 		},
 		actions: {
-			setTemp(items) {
+			setTemp(data) {
 				setStore({
-					temp: items
+					temp: data
 				});
 			},
-			resetTemp() {
-				setStore({
-					temp: {}
-				});
-			},
-			getCategories(end) {
-				fetch(`${ROOT}${end}`)
+			getElement(val) {
+				fetch(`${ROOT}${val}/`)
 					.then(res => res.json())
 					.then(data => {
 						setStore({
-							categories: data
+							[val]: data
 						});
 					});
-			} /*,
-			DeleteCategory(num, URL) {
-				fetch(URL + "/" + num, {
+			},
+			addElement(val, item) {
+				fetch(`${ROOT}${val}/`, {
+					method: "POST",
+					body: JSON.stringify(item)
+				}).then(resp => {
+					if (!resp.ok) {
+						let data = this.store.val.concat([item]);
+						setStore({
+							[val]: data
+						});
+					}
+					return resp.json();
+				});
+			},
+			deleteElement(id, val) {
+				fetch(`${ROOT}${val}/${id}`, {
 					method: "delete"
-				}).then(response => response.json());
-			}*/,
-			getElements(end) {
-				fetch(`${ROOT}${end}`)
-					.then(res => res.json())
-					.then(data => {
-						setStore({
-							elements: data
-						});
-					});
-			},
-			getTypes(end) {
-				fetch(`${ROOT}${end}`)
-					.then(res => res.json())
-					.then(data => {
-						setStore({
-							types: data
-						});
-					});
-			},
-			getProducts(end) {
-				fetch(`${ROOT}${end}`)
-					.then(res => res.json())
-					.then(data => {
-						setStore({
-							products: data
-						});
-					});
+				}).then(res => res.json());
+				// Aquí falta agregar que si la response es OK entonces
+				// Actualizar el array localmente (setState) con un filter
 			}
 		}
 	};
