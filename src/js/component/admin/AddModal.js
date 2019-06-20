@@ -61,19 +61,19 @@ export default class AddModal extends React.Component {
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<div className="modal-body">Nombre</div>
+										<div className="modal-body">Titulo</div>
 										<input
 											type="text"
 											className="form-control"
 											onChange={this.handleTitleChange}
 											value={this.state.title}
 										/>
-										<div className="modal-body">Descripción</div>
+										<div className="modal-body">Texto</div>
 										<textarea
 											className="form-control"
 											rows="3"
 											onChange={this.handleTextChange}
-											value={this.state.description}
+											value={this.state.text}
 										/>
 										<div className="modal-body">Imagen</div>
 										<input type="file" className="form-control-file" id="exampleFormControlFile1" />
