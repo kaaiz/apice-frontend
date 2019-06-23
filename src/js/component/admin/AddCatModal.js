@@ -1,7 +1,7 @@
 import React from "react";
 import { Context } from "../../store/appContext";
 
-export default class AddModal extends React.Component {
+export default class AddCatModal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

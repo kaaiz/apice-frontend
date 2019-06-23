@@ -1,7 +1,7 @@
 import React from "react";
 import { Context } from "../../store/appContext";
 
-export default class EditModal extends React.Component {
+export default class EditCatModal extends React.Component {
 	render() {
 		return (
 			<Context.Consumer>

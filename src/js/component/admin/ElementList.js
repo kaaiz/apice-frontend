@@ -1,50 +1,37 @@
 import React from "react";
 import { Context } from "../../store/appContext";
-import AddCatModal from "./AddCatModal";
-import EditCatModal from "./EditCatModal";
 
-export default class CategoryList extends React.Component {
+export default class ElementList extends React.Component {
 	render() {
 		return (
 			<div className="container">
 				<div className="card">
 					<div className="card-header">
-						<div className="d-flex justify-content-around">Categorias</div>
+						<div className="d-flex justify-content-around">Elementos</div>
 					</div>
-
 					<div className="card-body">
 						<table className="table">
 							<tbody>
 								<Context.Consumer>
 									{({ store, actions }) => {
-										if (store.category.length === 0) {
+										if (store.element.length === 0) {
 											return (
 												<tr>
-													<td>No hay categorías</td>
+													<td>No hay elementos</td>
 												</tr>
 											);
 										}
-										return store.category.map(category => {
+										return store.element.map(element => {
 											return (
-												<tr key={category.id}>
-													<td>{category.title}</td>
+												<tr key={element.id}>
+													<td>{element.title}</td>
 													<td>
-														<button
-															type="button"
-															className="btn btn-warning"
-															data-toggle="modal"
-															data-target="#modalEdit"
-															onClick={() => actions.setTemp(category)}>
+														<button type="button" className="btn btn-warning">
 															E
 														</button>
 													</td>
 													<td>
-														<button
-															type="button"
-															className="btn btn-danger"
-															onClick={() =>
-																actions.deleteElement(category.id, "category")
-															}>
+														<button type="button" className="btn btn-danger">
 															X
 														</button>
 													</td>
@@ -60,12 +47,10 @@ export default class CategoryList extends React.Component {
 							className="btn btn-primary btn-block"
 							data-toggle="modal"
 							data-target="#modalAdd">
-							Nueva categoría
+							Nuevo elemento
 						</button>
 					</div>
 				</div>
-				<EditCatModal />
-				<AddCatModal />
 			</div>
 		);
 	}
