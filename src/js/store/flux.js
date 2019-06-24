@@ -11,7 +11,8 @@ const getState = ({ getStore, setStore }) => {
 			error: {},
 			isAuthenticated: false,
 			username: "",
-			password: ""
+			password: "",
+			email: ""
 		},
 		actions: {
 			setTemp(data) {
@@ -70,6 +71,39 @@ const getState = ({ getStore, setStore }) => {
 								isAuthenticated: true,
 								username: "",
 								password: "",
+								error: ""
+							});
+						} else {
+							setStore({
+								error: resp
+							});
+						}
+					})
+					.catch(error => console.log(error));
+			},
+			register: (username, password, email) => {
+				let data = {
+					username: username,
+					password: password,
+					email: email
+				};
+
+				fetch(`${ROOT}register/`, {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						if (resp.token) {
+							setStore({
+								user: resp,
+								isAuthenticated: true,
+								username: "",
+								password: "",
+								email: "",
 								error: ""
 							});
 						} else {
