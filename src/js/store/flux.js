@@ -6,7 +6,12 @@ const getState = ({ getStore, setStore }) => {
 			element: [],
 			type: [],
 			product: [],
-			temp: {}
+			temp: {},
+			user: {},
+			error: {},
+			isAuthenticated: false,
+			username: "",
+			password: ""
 		},
 		actions: {
 			setTemp(data) {
@@ -43,6 +48,40 @@ const getState = ({ getStore, setStore }) => {
 				}).then(res => res.json());
 				// Aquí falta agregar que si la response es OK entonces
 				// Actualizar el array localmente (setState) con un filter
+			},
+			login: (username, password) => {
+				let data = {
+					username: username,
+					password: password
+				};
+
+				fetch(`${ROOT}login/`, {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						if (resp.token) {
+							setStore({
+								user: resp,
+								isAuthenticated: true,
+								username: "",
+								password: "",
+								error: ""
+							});
+						} else {
+							setStore({
+								error: resp
+							});
+						}
+					})
+					.catch(error => console.log(error));
+			},
+			onChange: e => {
+				setStore({ [e.target.id]: e.target.value });
 			}
 		}
 	};
