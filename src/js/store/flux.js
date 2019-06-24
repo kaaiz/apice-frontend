@@ -80,6 +80,34 @@ const getState = ({ getStore, setStore }) => {
 					})
 					.catch(error => console.log(error));
 			},
+			logout: e => {
+				e.preventDefault();
+				const store = getStore();
+				fetch(`${ROOT}logout/`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Token " + store.user.token
+					}
+				})
+					.then(resp => resp.json())
+					.then(resp => {
+						if (resp.detail) {
+							setStore({
+								user: {},
+								isAuthenticated: false,
+								username: "",
+								password: "",
+								error: ""
+							});
+						} else {
+							setStore({
+								error: resp
+							});
+						}
+					})
+					.catch(error => console.log(error));
+			},
 			onChange: e => {
 				setStore({ [e.target.id]: e.target.value });
 			}

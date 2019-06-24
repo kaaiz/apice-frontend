@@ -62,7 +62,9 @@ export class Nav extends Component {
 												</Link>
 											</li>
 											<li className="nav-item">
-												<span className={"nav-link"}>Logout</span>
+												<a href="javascript:void()" onClick={e => actions.logout(e)}>
+													<span className={"nav-link"}>Logout</span>
+												</a>
 											</li>
 										</Fragment>
 									);
