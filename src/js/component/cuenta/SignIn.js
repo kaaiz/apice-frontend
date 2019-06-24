@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Context } from "../../store/appContext";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
-export default class Registro extends Component {
+class Registro extends Component {
 	render() {
 		return (
 			<div className="container">
@@ -50,7 +52,12 @@ export default class Registro extends Component {
 											type="button"
 											className="btn btn-primary"
 											onClick={() =>
-												actions.register(store.username, store.password, store.email)
+												actions.register(
+													store.username,
+													store.password,
+													store.email,
+													this.props.history
+												)
 											}>
 											Crear
 										</button>
@@ -64,3 +71,9 @@ export default class Registro extends Component {
 		);
 	}
 }
+
+Registro.propTypes = {
+	history: PropTypes.object
+};
+
+export default withRouter(Registro);

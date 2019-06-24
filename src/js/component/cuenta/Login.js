@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Context } from "../../store/appContext";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
-export default class Login extends Component {
+class Login extends Component {
 	render() {
 		return (
 			<div className="container">
@@ -37,7 +39,9 @@ export default class Login extends Component {
 										<button
 											type="button"
 											className="btn btn-primary"
-											onClick={() => actions.login(store.username, store.password)}>
+											onClick={() =>
+												actions.login(store.username, store.password, this.props.history)
+											}>
 											Iniciar
 										</button>
 										<button className="btn btn-warning">Recuperar contraseña</button>
@@ -51,3 +55,9 @@ export default class Login extends Component {
 		);
 	}
 }
+
+Login.propTypes = {
+	history: PropTypes.object
+};
+
+export default withRouter(Login);

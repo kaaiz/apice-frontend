@@ -50,7 +50,7 @@ const getState = ({ getStore, setStore }) => {
 				// Aquí falta agregar que si la response es OK entonces
 				// Actualizar el array localmente (setState) con un filter
 			},
-			login: (username, password) => {
+			login: (username, password, history) => {
 				let data = {
 					username: username,
 					password: password
@@ -73,6 +73,7 @@ const getState = ({ getStore, setStore }) => {
 								password: "",
 								error: ""
 							});
+							history.push("/");
 						} else {
 							setStore({
 								error: resp
@@ -81,7 +82,7 @@ const getState = ({ getStore, setStore }) => {
 					})
 					.catch(error => console.log(error));
 			},
-			register: (username, password, email) => {
+			register: (username, password, email, history) => {
 				let data = {
 					username: username,
 					password: password,
@@ -106,6 +107,7 @@ const getState = ({ getStore, setStore }) => {
 								email: "",
 								error: ""
 							});
+							history.push("/");
 						} else {
 							setStore({
 								error: resp
