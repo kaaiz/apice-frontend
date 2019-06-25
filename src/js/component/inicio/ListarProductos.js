@@ -11,7 +11,7 @@ export default class ListarProductos extends React.Component {
 					if (diplayProducts.length === 0) {
 						return (
 							<div className="card header-seccion text-center border border-dark">
-								<h2>Producto Destacado</h2>
+								<h2>No hay productos destacados</h2>
 							</div>
 						);
 					}

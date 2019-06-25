@@ -10,6 +10,9 @@ export default class Home extends Component {
 		return (
 			<div>
 				<ListarElementos />
+				<div className="card header-seccion text-center border border-dark">
+					<h2>Productos destacados</h2>
+				</div>
 				<ListarProductos />
 				<BioMain />
 			</div>
