@@ -66,16 +66,10 @@ export class Nav extends Component {
 													<span className={"nav-link"}>Logout</span>
 												</a>
 											</li>
-											{store.user.is_staff ? (
+											{!!store.user.is_staff && (
 												<li className="nav-item">
 													<Link to={"/admin"} className={"nav-link"}>
 														Admin
-													</Link>
-												</li>
-											) : (
-												<li className="nav-item">
-													<Link to={"/perfil"} className={"nav-link"}>
-														Registrarse
 													</Link>
 												</li>
 											)}
