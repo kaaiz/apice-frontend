@@ -52,7 +52,11 @@ export default class ElementList extends React.Component {
 						</button>
 					</div>
 				</div>
-				<AddElementModal />
+				<Context.Consumer>
+					{({ store }) => {
+						return <AddElementModal store={store} />;
+					}}
+				</Context.Consumer>
 			</div>
 		);
 	}

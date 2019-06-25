@@ -1,5 +1,6 @@
 import React from "react";
 import { Context } from "../../store/appContext";
+import PropTypes from "prop-types";
 
 export default class AddElementModal extends React.Component {
 	constructor(props) {
@@ -7,7 +8,9 @@ export default class AddElementModal extends React.Component {
 		this.state = {
 			title: "",
 			text: "",
-			image: null
+			image: null,
+			display: false,
+			user: this.props.store.user
 		};
 		this.handleTitleChange = this.handleTitleChange.bind(this);
 		this.handleTextChange = this.handleTextChange.bind(this);
@@ -27,16 +30,27 @@ export default class AddElementModal extends React.Component {
 		if (!this.state.title.length) {
 			return;
 		}
-		const newElement = {
-			title: this.state.title,
-			text: this.state.text,
-			image: this.state.image
-		};
-		this.setState({
-			title: "",
-			text: "",
-			image: null
-		});
+		let formData = new FormData();
+
+		formData.append("title", this.state.title);
+		formData.append("text", this.state.text);
+		formData.append("image", this.state.image);
+		formData.append("display", this.state.display);
+		formData.append("category", 1);
+
+		fetch("http://localhost:8000/api/element/", {
+			method: "POST",
+			body: formData,
+			header: {
+				"Content-Type": "multipart/form-data",
+				//'Authorization': 'Token ' + user.token,
+				Authorization: "Token " + this.state.user.token
+			}
+		})
+			.then(resp => resp.json())
+			.then(resp => {
+				console.log(resp);
+			});
 	}
 
 	fileSelectedHandler = e => {
@@ -112,3 +126,7 @@ export default class AddElementModal extends React.Component {
 		);
 	}
 }
+
+AddElementModal.propTypes = {
+	store: PropTypes.object
+};
