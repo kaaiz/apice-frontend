@@ -1,13 +1,15 @@
 import React from "react";
-import Select from "react-select";
 import { Context } from "../../store/appContext";
+import Select from "react-select";
+import { isNullOrUndefined } from "util";
 
 export default class AddElementModal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			title: "",
-			text: ""
+			text: "",
+			image: null
 		};
 		this.handleTitleChange = this.handleTitleChange.bind(this);
 		this.handleTextChange = this.handleTextChange.bind(this);
@@ -29,18 +31,24 @@ export default class AddElementModal extends React.Component {
 		}
 		const newElement = {
 			title: this.state.title,
-			text: this.state.text
+			text: this.state.text,
+			image: this.state.image
 		};
 		this.setState({
 			title: "",
-			text: ""
+			text: "",
+			image: null
 		});
-		<Context.Consumer>{({ store, actions }) => actions.addElement("element", newElement)}</Context.Consumer>;
 	}
+
+	fileSelectedHandler = e => {
+		this.setState({
+			image: event.target.files[0]
+		});
+	};
 
 	render() {
 		return (
-			<Context.Consumer>
 			<div
 				className="modal fade"
 				id="modalElementAdd"
@@ -73,8 +81,23 @@ export default class AddElementModal extends React.Component {
 									onChange={this.handleTextChange}
 									value={this.state.text}
 								/>
-
-								<Select options={({ store, actions }) => store.} />
+								<select className="form-control" id="exampleFormControlSelect2">
+									<Context.Consumer>
+										{({ store, actions }) => {
+											if (store.category.length === 0) {
+												return <option>No hay categorías</option>;
+											}
+											return store.category.map(category => {
+												return (
+													<option key={category.id} value={category.id}>
+														{category.title}
+													</option>
+												);
+											});
+										}}
+									</Context.Consumer>
+								</select>
+								<input type="file" onChange={this.fileSelectedHandler} />
 							</div>
 							<div className="modal-footer">
 								<button type="button" className="btn btn-secondary" data-dismiss="modal">
@@ -88,7 +111,6 @@ export default class AddElementModal extends React.Component {
 					</div>
 				</div>
 			</div>
-			</Context.Consumer>
 		);
 	}
 }

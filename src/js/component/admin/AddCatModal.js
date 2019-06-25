@@ -30,7 +30,6 @@ export default class AddCatModal extends React.Component {
 			title: this.state.title,
 			text: this.state.text
 		};
-		<Context.Consumer>{({ store, actions }) => actions.addElement("category", newItem)}</Context.Consumer>;
 	}
 
 	render() {

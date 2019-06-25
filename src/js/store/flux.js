@@ -29,10 +29,10 @@ const getState = ({ getStore, setStore }) => {
 						});
 					});
 			},
-			addElement(val, item) {
+			addElement(val, data) {
 				fetch(`${ROOT}${val}/`, {
 					method: "POST",
-					body: JSON.stringify(item)
+					body: JSON.stringify(data)
 				}).then(resp => {
 					if (!resp.ok) {
 						let data = this.store.val.concat([item]);
