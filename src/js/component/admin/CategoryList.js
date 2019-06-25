@@ -33,7 +33,7 @@ export default class CategoryList extends React.Component {
 															type="button"
 															className="btn btn-warning"
 															data-toggle="modal"
-															data-target="#modalEdit"
+															data-target="#modalCatEdit"
 															onClick={() => actions.setTemp(category)}>
 															E
 														</button>
@@ -59,7 +59,7 @@ export default class CategoryList extends React.Component {
 							type="button"
 							className="btn btn-primary btn-block"
 							data-toggle="modal"
-							data-target="#modalAdd">
+							data-target="#modalCatAdd">
 							Nueva categoría
 						</button>
 					</div>

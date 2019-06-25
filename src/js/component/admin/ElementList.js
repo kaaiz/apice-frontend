@@ -1,5 +1,6 @@
 import React from "react";
 import { Context } from "../../store/appContext";
+import AddElementModal from "./AddElementModal";
 
 export default class ElementList extends React.Component {
 	render() {
@@ -46,11 +47,12 @@ export default class ElementList extends React.Component {
 							type="button"
 							className="btn btn-primary btn-block"
 							data-toggle="modal"
-							data-target="#modalAdd">
+							data-target="#modalElementAdd">
 							Nuevo elemento
 						</button>
 					</div>
 				</div>
+				<AddElementModal />
 			</div>
 		);
 	}

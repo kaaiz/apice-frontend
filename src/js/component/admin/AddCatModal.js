@@ -41,7 +41,7 @@ export default class AddCatModal extends React.Component {
 					return (
 						<div
 							className="modal fade"
-							id="modalAdd"
+							id="modalCatAdd"
 							tabIndex="-1"
 							role="dialog"
 							aria-labelledby="exampleModalLabel"

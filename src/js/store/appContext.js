@@ -23,6 +23,7 @@ const injectContext = PassedComponent => {
 
 		async componentDidMount() {
 			this.state.actions.getElement("category");
+			this.state.actions.getElement("element");
 		}
 
 		render() {
