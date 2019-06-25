@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Galeria from "../component/galeria/Seccion";
+import { Context } from "../../store/appContext";
 
 export default class Seccion extends Component {
 	render() {
@@ -7,10 +8,30 @@ export default class Seccion extends Component {
 			<div>
 				<div className="container">
 					<div className="card header-seccion text-center border border-dark">
-						<h2>Galería de trabajos</h2>
+						<h2>Galerías</h2>
 					</div>
 				</div>
-				<Galeria />
+				<Context.Consumer>
+					{({ store, actions }) => {
+						if (store.category.length === 0) {
+							return (
+								<div className="card header-seccion text-center border border-dark">
+									<h2>No hay galerías</h2>
+								</div>
+							);
+						}
+						return store.category.map(category => {
+							return (
+								<Galeria 
+									key={category.id}
+									title={category.title}
+									text={category.text}
+									image={category.image}
+								/>
+							);
+						});
+					}}
+				</Context.Consumer>
 			</div>
 		);
 	}

@@ -1,7 +1,5 @@
 import React from "react";
 import { Context } from "../../store/appContext";
-import Select from "react-select";
-import { isNullOrUndefined } from "util";
 
 export default class AddElementModal extends React.Component {
 	constructor(props) {
