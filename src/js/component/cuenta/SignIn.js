@@ -1,53 +1,79 @@
 import React, { Component } from "react";
+import { Context } from "../../store/appContext";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
-export default class Registro extends Component {
+class Registro extends Component {
 	render() {
 		return (
 			<div className="container">
 				<div className="card">
 					<div className="card-body">
-						<form>
-							<div className="form-group">
-								<label htmlFor="exampleInputEmail1">Nombre de usuario</label>
-								<input
-									type="name"
-									className="form-control input"
-									id="exampleInputEmail1"
-									placeholder="Elegir nombre"
-								/>
-							</div>
-							<div className="form-group">
-								<label htmlFor="exampleInputEmail1">Email</label>
-								<input
-									type="email"
-									className="form-control input"
-									id="exampleInputEmail1"
-									aria-describedby="emailHelp"
-									placeholder="Ingresar email"
-								/>
-							</div>
-							<div className="form-group">
-								<label htmlFor="exampleInputEmail1">Password</label>
-								<input
-									type="password"
-									className="form-control input"
-									id="exampleInputPassword1"
-									placeholder="Ingresar password"
-								/>
-							</div>
-							<div className="form-group">
-								<input
-									type="password"
-									className="form-control input"
-									id="exampleInputPassword1"
-									placeholder="Reingresar password"
-								/>
-							</div>
-							<button className="btn btn-primary">Crear</button>
-						</form>
+						<Context.Consumer>
+							{({ store, actions }) => {
+								return (
+									<form>
+										<div className="form-group">
+											<label htmlFor="username">Email</label>
+											<input
+												type="email"
+												className="form-control input"
+												id="email"
+												aria-describedby="emailHelp"
+												placeholder="Email"
+												value={store.email}
+												onChange={e => actions.onChange(e)}
+											/>
+										</div>
+										<div className="form-group">
+											<label htmlFor="username">Username</label>
+											<input
+												type="text"
+												className="form-control input"
+												id="username"
+												aria-describedby="emailHelp"
+												placeholder="Username"
+												value={store.username}
+												onChange={e => actions.onChange(e)}
+											/>
+										</div>
+										<div className="form-group">
+											<label htmlFor="password">Password</label>
+											<input
+												type="password"
+												className="form-control input"
+												id="password"
+												placeholder="Password"
+												value={store.password}
+												onChange={e => actions.onChange(e)}
+											/>
+										</div>
+										<button
+											type="button"
+											className="btn btn-primary"
+											onClick={() =>
+												actions.register(
+													store.username,
+													store.password,
+													store.email,
+													this.props.history
+												)
+											}>
+											Crear
+										</button>
+									</form>
+								);
+							}}
+						</Context.Consumer>
 					</div>
 				</div>
 			</div>
 		);
 	}
 }
+
+Registro.propTypes = {
+	history: PropTypes.object
+};
+
+export default withRouter(Registro);

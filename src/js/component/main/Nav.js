@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Context } from "../../store/appContext";
 
 export class Nav extends Component {
 	render() {
@@ -23,41 +24,52 @@ export class Nav extends Component {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarResponsive">
 						<ul className="navbar-nav ml-auto">
-							<Link to="/galeria">
-								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Galería
-									</a>
-								</li>
-							</Link>
-							<Link to="/tienda">
-								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Tienda
-									</a>
-								</li>
-							</Link>
-							<Link to="/carrito">
-								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Carrito
-									</a>
-								</li>
-							</Link>
-							<Link to="/inicio">
-								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Iniciar
-									</a>
-								</li>
-							</Link>
-							<Link to="/registro">
-								<li className="nav-item">
-									<a className="nav-link" href="#">
-										Registrarse
-									</a>
-								</li>
-							</Link>
+							<li className="nav-item">
+								<Link to={"/galeria"} className={"nav-link"}>
+									Galeria
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link to={"/tienda"} className={"nav-link"}>
+									Tienda
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link to={"/carrito"} className={"nav-link"}>
+									Carrito
+								</Link>
+							</li>
+							<Context.Consumer>
+								{({ store, actions }) => {
+									return !store.isAuthenticated ? (
+										<Fragment>
+											<li className="nav-item">
+												<Link to={"/inicio"} className={"nav-link"}>
+													Iniciar
+												</Link>
+											</li>
+											<li className="nav-item">
+												<Link to={"/registro"} className={"nav-link"}>
+													Registrarse
+												</Link>
+											</li>
+										</Fragment>
+									) : (
+										<Fragment>
+											<li className="nav-item">
+												<Link to={"/micuenta"} className={"nav-link"}>
+													Mi Cuenta
+												</Link>
+											</li>
+											<li className="nav-item">
+												<a href="javascript:void()" onClick={e => actions.logout(e)}>
+													<span className={"nav-link"}>Logout</span>
+												</a>
+											</li>
+										</Fragment>
+									);
+								}}
+							</Context.Consumer>
 						</ul>
 					</div>
 				</div>
