@@ -24,6 +24,19 @@ export class Nav extends Component {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarResponsive">
 						<ul className="navbar-nav ml-auto">
+							<Context.Consumer>
+								{({ store }) => {
+									return (
+										!!store.isAuthenticated && (
+											<li className="nav-item">
+												<Link to="/" className="nav-link disabled" ariaDisabled="true">
+													Bienvenido {store.user.username}
+												</Link>
+											</li>
+										)
+									);
+								}}
+							</Context.Consumer>
 							<li className="nav-item">
 								<Link to={"/galeria"} className={"nav-link"}>
 									Galeria

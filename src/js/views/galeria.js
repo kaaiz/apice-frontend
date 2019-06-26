@@ -24,6 +24,7 @@ export default class Seccion extends Component {
 							return (
 								<Galeria
 									key={category.id}
+									id={category.id}
 									title={category.title}
 									text={category.text}
 									image={category.image}
