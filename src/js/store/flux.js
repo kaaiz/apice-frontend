@@ -12,12 +12,18 @@ const getState = ({ getStore, setStore }) => {
 			isAuthenticated: false,
 			username: "",
 			password: "",
-			email: ""
+			email: "",
+			selectedType: ""
 		},
 		actions: {
 			setTemp(data) {
 				setStore({
 					temp: data
+				});
+			},
+			setType(id) {
+				setStore({
+					selectedType: id
 				});
 			},
 			getElement(val) {

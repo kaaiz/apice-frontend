@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Galeria from "../component/galeria/Seccion";
-import { Context } from "../../store/appContext";
+import { Context } from "../store/appContext";
 
 export default class Seccion extends Component {
 	render() {
