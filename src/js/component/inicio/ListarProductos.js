@@ -16,7 +16,7 @@ export default class ListarProductos extends React.Component {
 						);
 					}
 					return diplayProducts.map(product => {
-						return <Producto key={product.id} />;
+						return <Producto key={product.id} addToCart={actions.addToCart} product={product} />;
 					});
 				}}
 			</Context.Consumer>
