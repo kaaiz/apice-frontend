@@ -12,7 +12,8 @@ const getState = ({ getStore, setStore }) => {
 			isAuthenticated: false,
 			username: "",
 			password: "",
-			email: ""
+			email: "",
+			selectedType: ""
 		},
 		actions: {
 			setTemp(data) {
@@ -20,10 +21,16 @@ const getState = ({ getStore, setStore }) => {
 					temp: data
 				});
 			},
+			setType(id) {
+				setStore({
+					selectedType: id
+				});
+			},
 			getElement(val) {
 				fetch(`${ROOT}${val}/`)
 					.then(res => res.json())
 					.then(data => {
+						console.log(data);
 						setStore({
 							[val]: data
 						});

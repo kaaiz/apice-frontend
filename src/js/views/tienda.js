@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Producto from "../component/tienda/Producto";
+import Categoria from "../component/tienda/Categoria";
+import { Context } from "../store/appContext";
 
 export default class Tienda extends Component {
 	render() {
@@ -7,10 +8,31 @@ export default class Tienda extends Component {
 			<div>
 				<div className="container">
 					<div className="card header-seccion text-center border border-dark">
-						<h2>Secciones de Tienda</h2>
+						<h2>Tipos de productos</h2>
 					</div>
 				</div>
-				<Producto addToCart={actions.addToCart()} product={product} />
+				<Context.Consumer>
+					{({ store, actions }) => {
+						if (store.type.length === 0) {
+							return (
+								<div className="card header-seccion text-center border border-dark">
+									<h2>No hay secciones</h2>
+								</div>
+							);
+						}
+						return store.type.map(type => {
+							return (
+								<Categoria
+									key={type.id}
+									title={type.title}
+									text={type.text}
+									image={type.image}
+									id={type.id}
+								/>
+							);
+						});
+					}}
+				</Context.Consumer>
 			</div>
 		);
 	}

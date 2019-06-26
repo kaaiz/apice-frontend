@@ -11,6 +11,7 @@ export default class TiendaSeccion extends Component {
 					</div>
 				</div>
 				<Producto />
+				<Producto addToCart={actions.addToCart()} product={product} />
 			</div>
 		);
 	}
