@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Context } from "../store/appContext";
 import Producto from "../component/tienda/Producto";
 
 export default class TiendaSeccion extends Component {
@@ -10,8 +11,13 @@ export default class TiendaSeccion extends Component {
 						<h2>Nombre de sección</h2>
 					</div>
 				</div>
-				<Producto />
-				<Producto addToCart={actions.addToCart()} product={product} />
+				<Context.Consumer>
+					{({ store, actions }) => {
+						return store.product.map(product => {
+							return <Producto key={product.id} addToCart={actions.addToCart} product={product} />;
+						});
+					}}
+				</Context.Consumer>
 			</div>
 		);
 	}

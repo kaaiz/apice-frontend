@@ -6,6 +6,7 @@ const getState = ({ getStore, setStore }) => {
 			element: [],
 			type: [],
 			product: [],
+			carrito: [],
 			temp: {},
 			user: {},
 			error: {},
@@ -155,8 +156,10 @@ const getState = ({ getStore, setStore }) => {
 				setStore({ [e.target.id]: e.target.value });
 			},
 			addToCart: product => {
+				const store = getStore();
+				store.carrito.push(product);
 				setStore({
-					carrito: carrito.concat(product)
+					carrito: store.carrito
 				});
 			}
 		}
