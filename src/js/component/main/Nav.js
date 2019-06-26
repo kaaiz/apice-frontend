@@ -34,15 +34,15 @@ export class Nav extends Component {
 									Tienda
 								</Link>
 							</li>
-							<li className="nav-item">
-								<Link to={"/carrito"} className={"nav-link"}>
-									Carrito
-								</Link>
-							</li>
 							<Context.Consumer>
 								{({ store, actions }) => {
 									return !store.isAuthenticated ? (
 										<Fragment>
+											<li className="nav-item">
+												<Link to={"/carrito"} className={"nav-link"}>
+													Carrito ({store.carrito.length})
+												</Link>
+											</li>
 											<li className="nav-item">
 												<Link to={"/inicio"} className={"nav-link"}>
 													Iniciar
@@ -56,6 +56,11 @@ export class Nav extends Component {
 										</Fragment>
 									) : (
 										<Fragment>
+											<li className="nav-item">
+												<Link to={"/carrito"} className={"nav-link"}>
+													Carrito ({store.carrito.length})
+												</Link>
+											</li>
 											<li className="nav-item">
 												<Link to={"/micuenta"} className={"nav-link"}>
 													Mi Cuenta
