@@ -19,7 +19,6 @@ class Registro extends Component {
 												type="email"
 												className="form-control input"
 												id="email"
-												aria-describedby="emailHelp"
 												placeholder="Email"
 												value={store.email}
 												onChange={e => actions.onChange(e)}
@@ -31,7 +30,6 @@ class Registro extends Component {
 												type="text"
 												className="form-control input"
 												id="username"
-												aria-describedby="emailHelp"
 												placeholder="Username"
 												value={store.username}
 												onChange={e => actions.onChange(e)}

@@ -146,9 +146,13 @@ const getState = ({ getStore, setStore }) => {
 			},
 			onChange: e => {
 				setStore({ [e.target.id]: e.target.value });
+			},
+			addToCart: product => {
+				setStore({
+					carrito: carrito.concat(product)
+				});
 			}
 		}
 	};
 };
-
 export default getState;

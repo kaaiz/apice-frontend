@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Categoria from "../component/tienda/Categoria";
+import Producto from "../component/tienda/Producto";
 
 export default class Tienda extends Component {
 	render() {
@@ -10,7 +10,7 @@ export default class Tienda extends Component {
 						<h2>Secciones de Tienda</h2>
 					</div>
 				</div>
-				<Categoria />
+				<Producto addToCart={actions.addToCart()} product={product} />
 			</div>
 		);
 	}

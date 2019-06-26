@@ -3,21 +3,17 @@ body {
     padding-top: 50px;
     font-family: 'Montserrat', sans-serif;
 }
-
 .btn {
     border-radius: 0px;
 }
-
 .navbar {
     border-bottom: 1px solid rgb(114, 114, 114);
     padding-top: 0px;
     padding-bottom: 0px;
 }
-
 .navbar-brand {
     font-family: 'Lobster', cursive;
 }
-
 .card {
     border-radius: 0;
     max-width: 500px;
@@ -25,67 +21,79 @@ body {
     margin-top: 20px;
     border: solid black 1px;
 }
-
 .card img {
     border-radius: 0;
 }
-
 .about-us-img {
     height: 100%;
 }
-
 .footer {
     border-top: 1px solid rgb(114, 114, 114);
     background-color:rgb(228, 228, 228);
     margin-top: 30px;
 }
-
 .footer .container h1 {
     margin-bottom: 0;
 }
-
 .footer-header {
     font-family: 'Lobster', cursive;
     padding-top: 30px;
     padding-bottom: 30px;
 }
-
 .fab {
     font-size: 3rem;
 }
-
 .footer-content {
     padding-bottom: 30px;
 }
-
 /* Galeria Secciones */
-
 .header-seccion {
     font-family: 'Lobster', cursive;
 }
-
 .titulo-seccion {
     margin-top: 8px;
 }
-
 /* Iniciar Sesión */
-
 form button {
     width: 100%;
     margin-top: 10px;
 }
-
 .input {
     border-radius: 0;
 }
-
 /* Menu Administrador */
-
 .bd-example {
     display: flex;
     justify-content: center;
 }
-
 .menu-admin {
     border-top: solid black 1px;
+}
+.acordeon-title{
+    color: black;
+    font-style: none;
+}
+.acordeon{
+    background-color: #fff;
+}
+.add-icon{
+    color: #3066BE;
+    font-size: 1.3em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.minus-icon{
+    color: #ffc107;
+    font-size: 1.3em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.delete-icon{
+    color: #AE2325;
+    font-size: 1.3em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#exampleInputEmail1{
+    text-align: center;
 }
