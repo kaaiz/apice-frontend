@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Galeria from "../component/galeria/Seccion";
-import { Context } from "../../store/appContext";
+import { Context } from "../store/appContext";
 
 export default class Seccion extends Component {
 	render() {
@@ -22,7 +22,7 @@ export default class Seccion extends Component {
 						}
 						return store.category.map(category => {
 							return (
-								<Galeria 
+								<Galeria
 									key={category.id}
 									title={category.title}
 									text={category.text}
