@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTrypes from "prop-types";
 export default class CompraItem extends Component {
 	constructor(props) {
 		super(props);
@@ -23,8 +24,8 @@ export default class CompraItem extends Component {
 	render() {
 		return (
 			<tr>
-				<th scope="row">Sombrero Azul</th>
-				<td>$5.500</td>
+				<th scope="row">{this.props.item.title}</th>
+				<td>${this.props.item.price}</td>
 				<td>
 					<div className="text-center">{this.state.cantidad}</div>
 				</td>
@@ -37,3 +38,7 @@ export default class CompraItem extends Component {
 		);
 	}
 }
+
+CompraItem.propTypes = {
+	item: PropTrypes.object
+};
