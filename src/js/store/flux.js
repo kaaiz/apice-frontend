@@ -30,6 +30,7 @@ const getState = ({ getStore, setStore }) => {
 				fetch(`${ROOT}${val}/`)
 					.then(res => res.json())
 					.then(data => {
+						console.log(data);
 						setStore({
 							[val]: data
 						});

@@ -18,24 +18,16 @@ export default function Categoria(props) {
 							aria-controls="collapseExample">
 							{props.title}
 						</button>
-						<Context.Consumer>
-							{({ store, actions }) => {
-								<Link to={"/tiendaseccion"}>
-									<button
-										type="button"
-										className="btn btn-outline-success"
-										onClick={actions.setType(props.id)}>
-										Ir a sección
-									</button>
-								</Link>;
-							}}
-						</Context.Consumer>
+						<Link to={"/tienda/seccion/" + props.id} className={"btn btn-outline-success"}>
+							Ir a sección
+						</Link>
+						;
 					</div>
 					<div className="collapse" id="collapseProduct1">
 						<div className="card card-body">{props.text}</div>
 					</div>
 				</div>
-				<img src={props.image} className="card-img-top" alt="..." />
+				{!!props.image && <img src={props.image} className="card-img-top" alt="..." />}
 			</div>
 		</div>
 	);
@@ -45,5 +37,5 @@ Categoria.propTypes = {
 	title: PropTypes.string,
 	image: PropTypes.string,
 	text: PropTypes.string,
-	id: PropTypes.string
+	id: PropTypes.number
 };
