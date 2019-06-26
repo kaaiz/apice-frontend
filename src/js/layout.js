@@ -35,7 +35,7 @@ export class Layout extends React.Component {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/galeria" component={Galeria} />
-							<Route exact path="/galeria/elemento" component={GaleriaSeccion} />
+							<Route exact path="/galeria/elemento/:id" component={GaleriaSeccion} />
 							<Route exact path="/tienda" component={Tienda} />
 							<Route exact path="/tienda/seccion/:id" component={TiendaSeccion} />
 							<Route exact path="/carrito" component={Carrito} />

@@ -6,10 +6,10 @@ export default function Elemento(props) {
 		<div className="container">
 			<div className="card">
 				<div className="card-header">
-					<div className="d-flex justify-content-around card-header">{props.title}</div>
-					<div className="card card-body">{props.text}</div>
+					<div className="d-flex justify-content-around card-header">{this.props.element.title}</div>
+					<div className="card card-body">{this.props.element.text}</div>
 				</div>
-				<img src={props.image} className="card-img-top" alt="otra" />
+				<img src={this.props.element.image} className="card-img-top" alt="..." />
 			</div>
 		</div>
 	);
